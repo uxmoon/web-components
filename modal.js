@@ -6,6 +6,8 @@ class Modal extends HTMLElement {
       <style>
         .backdrop {
           position: fixed;
+          opacity: 0;
+          pointer-events: none;
           top: 0;
           left: 0;
           width: 100%;
@@ -15,6 +17,8 @@ class Modal extends HTMLElement {
         }
         .modal {
           position: fixed;
+          opacity: 0;
+          pointer-events: none;
           top: 15vh;
           left: 25%;
           width: 50%;
