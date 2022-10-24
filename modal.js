@@ -30,6 +30,14 @@ class Modal extends HTMLElement {
           flex-direction: column;
           justify-content: space-between;
         }
+        :host([show]) .backdrop {
+          opacity: 1;
+          pointer-events: all;
+        }
+        :host([show]) .modal {
+          opacity: 1;
+          pointer-events: all;
+        }
         .modal-header {
           padding: 1rem;
           border-bottom: 1px solid #ccc;
@@ -66,6 +74,21 @@ class Modal extends HTMLElement {
       </div>
     `;
   }
+
+  // attributeChangedCallback(name, oldValue, newValue) {
+  //   if (name === 'show') {
+  //     if (this.hasAttribute('show')) {
+  //       this.shadowRoot.querySelector('.backdrop').style.opacity = 1;
+  //       this.shadowRoot.querySelector('.backdrop').style.pointerEvents = 'all';
+  //       this.shadowRoot.querySelector('.modal').style.opacity = 1;
+  //       this.shadowRoot.querySelector('.modal').style.pointerEvents = 'all';
+  //     }
+  //   }
+  // }
+  
+  // static get observedAttributes() {
+  //   return ['show'];
+  // }
 }
 
 customElements.define('wc-modal', Modal);
