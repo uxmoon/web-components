@@ -75,6 +75,10 @@ class Modal extends HTMLElement {
         </footer>
       </div>
     `;
+    // const slots = this.shadowRoot.querySelectorAll('slot')
+    // slots[1].addEventListener('slotchange', () => {
+    //   console.dir(slots[1].assignedNodes());
+    // })
   }
 
   show() {
@@ -91,7 +95,7 @@ class Modal extends HTMLElement {
   //     }
   //   }
   // }
-  
+
   // static get observedAttributes() {
   //   return ['show'];
   // }
