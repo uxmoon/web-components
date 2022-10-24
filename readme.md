@@ -26,6 +26,18 @@ class Modal extends HTMLElement {
   static get observedAttributes() {
     return ['show'];
   }
+
+  // Emit custom event: method 1
+  _decline(event) {
+    const declineEvent = new Event('decline', { bubbles: true, composed: true })
+    event.target.dispatchEvent(declineEvent)
+  }
+
+  // Emit custom event: method 2
+  _confirm() {
+    const confirmEvent = new Event('confirm')
+    this.dispatchEvent(confirmEvent)
+  }
 }
 
 // Component name should be two words to avoid conflicts with HTML tags
