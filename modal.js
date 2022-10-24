@@ -100,12 +100,16 @@ class Modal extends HTMLElement {
     this.isOpen = false
   }
 
-  _decline() {
+  _decline(event) {
     this.hide()
+    const declineEvent = new Event('decline', { bubbles: true, composed: true })
+    event.target.dispatchEvent(declineEvent)
   }
 
   _confirm() {
     this.hide()
+    const confirmEvent = new Event('confirm')
+    this.dispatchEvent(confirmEvent)
   }
 
   // attributeChangedCallback(name, oldValue, newValue) {
