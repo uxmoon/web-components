@@ -17,6 +17,15 @@ class Modal extends HTMLElement {
       <div></div>
     `;
   }
+
+  // Listen to attributes changes
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(name, oldValue, newValue);
+  }
+  
+  static get observedAttributes() {
+    return ['show'];
+  }
 }
 
 // Component name should be two words to avoid conflicts with HTML tags
