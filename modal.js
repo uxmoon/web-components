@@ -20,7 +20,7 @@ class Modal extends HTMLElement {
           position: fixed;
           opacity: 0;
           pointer-events: none;
-          top: 15vh;
+          top: 10vh;
           left: 25%;
           width: 50%;
           z-index: 100;
@@ -30,6 +30,7 @@ class Modal extends HTMLElement {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          transition: all 0.3s ease-in-out;
         }
         :host([show]) .backdrop {
           opacity: 1;
@@ -38,6 +39,9 @@ class Modal extends HTMLElement {
         :host([show]) .modal {
           opacity: 1;
           pointer-events: all;
+        }
+        :host([show]) .modal {
+          top: 15vh;
         }
         .modal-header {
           padding: 1rem;
@@ -83,9 +87,11 @@ class Modal extends HTMLElement {
 
     const buttonCancel = this.shadowRoot.querySelector('.action-cancel')
     const buttonOk = this.shadowRoot.querySelector('.action-ok')
+    const backdrop = this.shadowRoot.querySelector('.backdrop')
 
     buttonCancel.addEventListener('click', this._decline.bind(this))
     buttonOk.addEventListener('click', this._confirm.bind(this))
+    backdrop.addEventListener('click', this._decline.bind(this))
   }
 
   show() {
