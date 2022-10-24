@@ -10,6 +10,10 @@ class Modal extends HTMLElement {
     super()
     // Add Shadow DOM
     this.attachShadow({ mode: 'open' })
+    // Add the HTML template structure
+    this.shadowRoot.innerHTML = `
+      <div></div>
+    `;
   }
 }
 
