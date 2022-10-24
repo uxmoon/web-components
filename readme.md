@@ -22,3 +22,9 @@ class Modal extends HTMLElement {
 // Component name should be two words to avoid conflicts with HTML tags
 customElements.define('wc-modal', Modal);
 ```
+
+## Visual studio code
+
+Recommended extension for syntax highlighting:
+
+[Comment tagged templates](https://marketplace.visualstudio.com/items?itemName=bierner.comment-tagged-templates)
