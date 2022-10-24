@@ -113,4 +113,4 @@ class Tooltip extends HTMLElement {
   }
 }
 
-customElements.define('vds-tooltip', Tooltip);
+customElements.define('wc-tooltip', Tooltip);

@@ -8,4 +8,4 @@ class ConfirmLink extends HTMLAnchorElement {
   }
 }
 
-customElements.define('vds-confirm-link', ConfirmLink, { extends: 'a' })
+customElements.define('wc-confirm-link', ConfirmLink, { extends: 'a' })
