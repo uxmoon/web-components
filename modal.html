@@ -21,8 +21,11 @@
     const button = document.querySelector('button')
     const modal = document.querySelector('wc-modal')
     button.addEventListener('click', () => {
-      // modal.setAttribute('show', '')
-      modal.show()
+      if (!modal.isOpen) {
+        // modal.setAttribute('show', '')
+        modal.show()
+        console.log('modal open!');
+      }
     })
     // Custom events
     modal.addEventListener('confirm', () => {

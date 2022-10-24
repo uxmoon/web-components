@@ -2,6 +2,7 @@ class Modal extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    this.isOpen = false
     this.shadowRoot.innerHTML = /* html */ `
       <style>
         .backdrop {
@@ -89,10 +90,14 @@ class Modal extends HTMLElement {
 
   show() {
     this.setAttribute('show', '')
+    this.isOpen = true
   }
 
   hide() {
-    this.removeAttribute('show')
+    if (this.hasAttribute('show')) {
+      this.removeAttribute('show')
+    }
+    this.isOpen = false
   }
 
   _decline() {
