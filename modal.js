@@ -42,7 +42,7 @@ class Modal extends HTMLElement {
           padding: 1rem;
           border-bottom: 1px solid #ccc;
         }
-        .modal-title {
+        .modal-header ::slotted(*) {
           font-size: 1.75rem;
           margin: 0;
         }
@@ -62,7 +62,9 @@ class Modal extends HTMLElement {
       <div class="backdrop"></div>
       <div class="modal">
         <header class="modal-header">
-          <h1 class="modal-title">Modal title</h1>
+          <slot name="title">
+            Modal title
+          </slot>
         </header>
         <section class="modal-content">
           <slot></slot>
@@ -73,6 +75,10 @@ class Modal extends HTMLElement {
         </footer>
       </div>
     `;
+  }
+
+  show() {
+    this.setAttribute('show', '')
   }
 
   // attributeChangedCallback(name, oldValue, newValue) {

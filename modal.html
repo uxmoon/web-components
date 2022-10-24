@@ -13,6 +13,7 @@
   <h1>Web components: Modal</h1>
   <button type="button">Open modal</button>
   <wc-modal>
+    <h1 slot="title">Heading 1</h1>
     <p>Modal content to display in the slot.</p>
   </wc-modal>
   <script src="modal.js"></script>
@@ -20,7 +21,8 @@
     const button = document.querySelector('button')
     const modal = document.querySelector('wc-modal')
     button.addEventListener('click', () => {
-      modal.setAttribute('show', '')
+      // modal.setAttribute('show', '')
+      modal.show()
     })
   </script>
 </body>
