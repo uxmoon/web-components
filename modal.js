@@ -70,8 +70,8 @@ class Modal extends HTMLElement {
           <slot></slot>
         </section>
         <footer class="modal-actions">
-          <button type="button">Cancel</button>
-          <button type="button">Ok</button>
+          <button type="button" class="action-cancel">Cancel</button>
+          <button type="button" class="action-ok">Ok</button>
         </footer>
       </div>
     `;
@@ -79,10 +79,28 @@ class Modal extends HTMLElement {
     // slots[1].addEventListener('slotchange', () => {
     //   console.dir(slots[1].assignedNodes());
     // })
+
+    const buttonCancel = this.shadowRoot.querySelector('.action-cancel')
+    const buttonOk = this.shadowRoot.querySelector('.action-ok')
+
+    buttonCancel.addEventListener('click', this._decline.bind(this))
+    buttonOk.addEventListener('click', this._confirm.bind(this))
   }
 
   show() {
     this.setAttribute('show', '')
+  }
+
+  hide() {
+    this.removeAttribute('show')
+  }
+
+  _decline() {
+    this.hide()
+  }
+
+  _confirm() {
+    this.hide()
   }
 
   // attributeChangedCallback(name, oldValue, newValue) {

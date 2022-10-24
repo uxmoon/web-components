@@ -24,6 +24,13 @@
       // modal.setAttribute('show', '')
       modal.show()
     })
+    // Custom events
+    modal.addEventListener('confirm', () => {
+      console.log('Confirm');
+    })
+    modal.addEventListener('decline', () => {
+      console.log('Decline');
+    })
   </script>
 </body>
 
