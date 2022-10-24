@@ -18,15 +18,48 @@ class Modal extends HTMLElement {
           top: 15vh;
           left: 25%;
           width: 50%;
-          height: 30rem;
           z-index: 100;
           background-color: #fff;
           border-radius: 4px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .modal-header {
+          padding: 1rem;
+          border-bottom: 1px solid #ccc;
+        }
+        .modal-title {
+          font-size: 1.75rem;
+          margin: 0;
+        }
+        .modal-actions {
+          border-top: 1px solid #ccc;
+          display: flex;
+          justify-content: flex-end;
+          padding: 1rem;
+        }
+        .modal-actions button {
+          margin: 0 0.5rem;
+        }
+        .modal-content {
+          padding: 1rem;
         }
       </style>
       <div class="backdrop"></div>
-      <div class="modal"></div>
+      <div class="modal">
+        <header class="modal-header">
+          <h1 class="modal-title">Modal title</h1>
+        </header>
+        <section class="modal-content">
+          <slot></slot>
+        </section>
+        <footer class="modal-actions">
+          <button type="button">Cancel</button>
+          <button type="button">Ok</button>
+        </footer>
+      </div>
     `;
   }
 }
