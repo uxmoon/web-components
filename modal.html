@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,21 @@
   <title>Modal - Web components</title>
   <link rel="stylesheet" href="reset.css">
 </head>
+
 <body>
   <h1>Web components: Modal</h1>
+  <button type="button">Open modal</button>
   <wc-modal>
     <p>Modal content to display in the slot.</p>
   </wc-modal>
   <script src="modal.js"></script>
+  <script>
+    const button = document.querySelector('button')
+    const modal = document.querySelector('wc-modal')
+    button.addEventListener('click', () => {
+      modal.setAttribute('show', '')
+    })
+  </script>
 </body>
+
 </html>
