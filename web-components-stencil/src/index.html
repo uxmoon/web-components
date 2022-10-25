@@ -9,6 +9,13 @@
     <script nomodule src="/build/web-components-stencil.js"></script>
   </head>
   <body>
-    <wc-drawer></wc-drawer>
+    <wc-drawer title="Main menu"></wc-drawer>
+
+    <script>
+      const el = document.querySelector('wc-drawer')
+      setTimeout(() => {
+        el.title = 'Side drawer!'
+      }, 2000);
+    </script>
   </body>
 </html>
