@@ -1,4 +1,4 @@
-import { h, Component } from '@stencil/core'
+import { h, Host, Component } from '@stencil/core'
 
 @Component({
   tag: 'wc-stock-price',
@@ -9,11 +9,13 @@ import { h, Component } from '@stencil/core'
 export class StockPrice {
   render() {
     return (
-      <div>
-        <h1>
-          StockPrice
-        </h1>
-      </div>
+      <Host>
+        <form>
+          <input type="text" id="stock-symbol" />
+          <button type="submit">Fetch</button>
+        </form>
+        <p>Price: {0}</p>
+      </Host>
     )
   }
 }
