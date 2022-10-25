@@ -9,6 +9,7 @@ export namespace Components {
     interface WcDrawer {
         "heading": string;
         "show": boolean;
+        "showDrawer": () => Promise<void>;
     }
 }
 declare global {

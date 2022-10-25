@@ -1,4 +1,4 @@
-import { h, Component, Prop, State } from '@stencil/core'
+import { h, Component, Prop, State, Method } from '@stencil/core'
 
 @Component({
   tag: 'wc-drawer',
@@ -13,7 +13,7 @@ export class SideDrawer {
 
   @Prop({ reflect: true, mutable: true }) show: boolean;
 
-  // Methods
+  // Private Methods
   onHideDrawer() {
     this.show = false;
   }
@@ -21,6 +21,12 @@ export class SideDrawer {
   onContentChange(content: string) {
     // console.log(content);
     this.showContactTab = content === 'contact';
+  }
+
+  // Public methods
+  @Method()
+  showDrawer() {
+    this.show = true;
   }
 
   render() {
