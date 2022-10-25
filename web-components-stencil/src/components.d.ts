@@ -7,8 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface WcDrawer {
+        "heading": string;
         "show": boolean;
-        "title": string;
     }
 }
 declare global {
@@ -24,8 +24,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface WcDrawer {
+        "heading"?: string;
         "show"?: boolean;
-        "title"?: string;
     }
     interface IntrinsicElements {
         "wc-drawer": WcDrawer;

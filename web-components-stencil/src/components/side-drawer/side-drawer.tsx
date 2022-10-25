@@ -7,15 +7,26 @@ import { h, Component, Prop } from '@stencil/core'
 })
 
 export class SideDrawer {
-  @Prop({ reflect: true }) title: string;
+  @Prop({ reflect: true }) heading: string;
 
-  @Prop({ reflect: true }) show: boolean;
+  @Prop({ reflect: true, mutable: true }) show: boolean;
+
+  // Methods
+  onHideDrawer() {
+    this.show = false;
+  }
 
   render() {
     return (
       <aside>
         <header>
-          <h1>{this.title}</h1>
+          <h1>{this.heading}</h1>
+          <button
+            type='button'
+            onClick={this.onHideDrawer.bind(this)}
+          >
+            &times;
+          </button>
         </header>
         <main>
           <slot></slot>
