@@ -28,6 +28,10 @@ export class SideDrawer {
             &times;
           </button>
         </header>
+        <section class='drawer-tabs'>
+          <button class='active'>Navigation</button>
+          <button>Contact</button>
+        </section>
         <main>
           <slot></slot>
         </main>
