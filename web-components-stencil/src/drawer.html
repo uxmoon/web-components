@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/web-components-stencil.esm.js"></script>
+    <script nomodule src="/build/web-components-stencil.js"></script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .side-nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      .side-nav li {
+        margin: 1rem 0;
+      }
+      .side-nav a {
+        text-decoration: none;
+        color: #663300;
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn-drawer">Open drawer</button>
+    <wc-drawer heading="Main menu">
+      <nav class="side-nav">
+        <ul>
+          <li><a href="#">A Link</a></li>
+          <li><a href="#">Another Link</a></li>
+          <li><a href="#">Third Link</a></li>
+        </ul>
+      </nav>
+    </wc-drawer>
+
+    <script>
+      const elDrawer = document.querySelector('wc-drawer')
+      const elDrawerTrigger = document.querySelector('.btn-drawer')
+      elDrawerTrigger.addEventListener('click', () => {
+        if(!elDrawer.show) {
+          // console.log('open!');
+          // elDrawer.show = true
+          console.log('open using method');
+          elDrawer.showDrawer()
+        }
+      })
+      // setTimeout(() => {
+      //   el.title = 'Side drawer!'
+      // }, 2000);
+    </script>
+  </body>
+</html>
