@@ -44,8 +44,10 @@
       const elDrawerTrigger = document.querySelector('.btn-drawer')
       elDrawerTrigger.addEventListener('click', () => {
         if(!elDrawer.show) {
-          console.log('open!');
-          elDrawer.show = true
+          // console.log('open!');
+          // elDrawer.show = true
+          console.log('open using method');
+          elDrawer.showDrawer()
         }
       })
       // setTimeout(() => {
