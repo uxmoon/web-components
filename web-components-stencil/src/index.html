@@ -28,6 +28,7 @@
     </style>
   </head>
   <body>
+    <button class="btn-drawer">Open drawer</button>
     <wc-drawer title="Main menu">
       <nav class="side-nav">
         <ul>
@@ -39,7 +40,14 @@
     </wc-drawer>
 
     <script>
-      const el = document.querySelector('wc-drawer')
+      const elDrawer = document.querySelector('wc-drawer')
+      const elDrawerTrigger = document.querySelector('.btn-drawer')
+      elDrawerTrigger.addEventListener('click', () => {
+        if(!elDrawer.show) {
+          console.log('open!');
+          elDrawer.show = true
+        }
+      })
       // setTimeout(() => {
       //   el.title = 'Side drawer!'
       // }, 2000);
