@@ -1,4 +1,4 @@
-import { h, Component, Prop, State, Method } from '@stencil/core'
+import { h, Host, Component, Prop, State, Method } from '@stencil/core'
 
 @Component({
   tag: 'wc-drawer',
@@ -16,6 +16,7 @@ export class SideDrawer {
   // Private Methods
   onHideDrawer() {
     this.show = false;
+    console.log('hide');
   }
 
   onContentChange(content: string) {
@@ -48,34 +49,40 @@ export class SideDrawer {
       );
     }
     return (
-      <aside>
-        <header>
-          <h1>{this.heading}</h1>
-          <button
-            type='button'
-            onClick={this.onHideDrawer.bind(this)}
-          >
-            &times;
-          </button>
-        </header>
-        <section class='drawer-tabs'>
-          <button
-            class={!this.showContactTab ? 'active' : ''}
-            onClick={this.onContentChange.bind(this, 'nav')}
-          >
-            Navigation
-          </button>
-          <button
-            class={this.showContactTab ? 'active' : ''}
-            onClick={this.onContentChange.bind(this, 'contact')}
-          >
-            Contact
-          </button>
-        </section>
-        <main>
-          {mainContent}
-        </main>
-      </aside>
+      <Host>
+        <div
+          class='backdrop'
+          onClick={this.onHideDrawer.bind(this)}
+        />
+        <aside>
+          <header>
+            <h1>{this.heading}</h1>
+            <button
+              type='button'
+              onClick={this.onHideDrawer.bind(this)}
+            >
+              &times;
+            </button>
+          </header>
+          <section class='drawer-tabs'>
+            <button
+              class={!this.showContactTab ? 'active' : ''}
+              onClick={this.onContentChange.bind(this, 'nav')}
+            >
+              Navigation
+            </button>
+            <button
+              class={this.showContactTab ? 'active' : ''}
+              onClick={this.onContentChange.bind(this, 'contact')}
+            >
+              Contact
+            </button>
+          </section>
+          <main>
+            {mainContent}
+          </main>
+        </aside>
+      </Host>
     )
   }
 }
