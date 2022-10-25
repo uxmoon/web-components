@@ -17,10 +17,25 @@ aside {
 header {
   padding: 1rem;
   background-color: #000;
+  position: relative;
 }
 
 header h1 {
   font-size: 1.75rem;
   color: #fff;
   margin: 0;
+}
+
+header button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 2rem;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  border-width: 0;
 }
