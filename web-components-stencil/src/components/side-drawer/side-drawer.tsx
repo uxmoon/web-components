@@ -17,6 +17,21 @@ export class SideDrawer {
   }
 
   render() {
+    let mainContent = <slot />
+    mainContent = (
+      <div class='contact-information'>
+        <h2>Contact information</h2>
+        <p>You can reach us via phone or email</p>
+        <ul>
+          <li>Phone: 11 5555 3333</li>
+          <li>Email:
+            <a href="mailto:fake@mail.com">
+              fake@mail.com
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
     return (
       <aside>
         <header>
@@ -33,7 +48,7 @@ export class SideDrawer {
           <button>Contact</button>
         </section>
         <main>
-          <slot></slot>
+          {mainContent}
         </main>
       </aside>
     )
