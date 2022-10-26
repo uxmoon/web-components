@@ -1,4 +1,5 @@
 import { h, Host, Component, State } from '@stencil/core'
+import { AV_API_KEY } from '../../global/global';
 
 @Component({
   tag: 'wc-stock-price',
@@ -14,7 +15,7 @@ export class StockPrice {
     event.preventDefault();
 
     // alpha vantage API
-    const url = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo'
+    const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=${AV_API_KEY}`
 
     fetch(url)
       .then((response) => {
