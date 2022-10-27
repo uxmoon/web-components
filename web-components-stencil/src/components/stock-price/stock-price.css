@@ -29,6 +29,13 @@ form button:focus {
   background-color: #59458D;
 }
 
+form button[disabled] {
+  background-color: #ccc;
+  border: 1px solid #bbb;
+  color: #fff;
+  cursor: not-allowed;
+}
+
 h1 {
   margin: 0;
 }
