@@ -14,6 +14,10 @@ export class StockPrice {
 
   @State() fetchedPrice: number;
 
+  @State() userInput: string;
+
+  @State() validInput = false;
+
   // method to fetch data
   onFormSubmit(event: Event) {
     event.preventDefault();
@@ -39,6 +43,15 @@ export class StockPrice {
       })
   }
 
+  validateInput(event: Event) {
+    this.userInput = (event.target as HTMLInputElement).value
+    if (this.userInput.trim() !== '') {
+      this.validInput = true
+    } else {
+      this.validInput = false
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -47,8 +60,13 @@ export class StockPrice {
             type="text"
             id="stock-symbol"
             ref={(el) => this.elStockInput = el}
+            value={this.userInput}
+            onInput={this.validateInput.bind(this)}
           />
-          <button type="submit">Fetch</button>
+          <button
+            type="submit"
+            disabled={!this.validInput}
+          >Fetch</button>
         </form>
         <p>Price: ${this.fetchedPrice}</p>
       </Host>
