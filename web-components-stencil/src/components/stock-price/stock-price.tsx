@@ -18,6 +18,8 @@ export class StockPrice {
 
   @State() validInput = false;
 
+  @State() error: string;
+
   // method to fetch data
   onFormSubmit(event: Event) {
     event.preventDefault();
@@ -33,13 +35,15 @@ export class StockPrice {
         return response.json()
       })
       .then((data) => {
-        // console.log(data['Global Quote']['05. price']);
-
+         if (!data['Global Quote']['05. price']) {
+          throw new Error('Invalid symbol!')
+        }
+        this.error = null;
         // get price and convert string to number
         this.fetchedPrice = +data['Global Quote']['05. price']
       })
       .catch((err) => {
-        console.log(err);
+        this.error = err.message;
       })
   }
 
@@ -53,6 +57,13 @@ export class StockPrice {
   }
 
   render() {
+    let textMessage = <p>Enter a valid symbol.</p>
+    if (this.error) {
+      textMessage = <p>{this.error}</p>
+    }
+    if (this.fetchedPrice) {
+      textMessage = <p>Price: ${this.fetchedPrice}</p>
+    }
     return (
       <Host>
         <form onSubmit={this.onFormSubmit.bind(this)}>
@@ -68,7 +79,8 @@ export class StockPrice {
             disabled={!this.validInput}
           >Fetch</button>
         </form>
-        <p>Price: ${this.fetchedPrice}</p>
+        {/* <p>Price: ${this.fetchedPrice}</p> */}
+        {textMessage}
       </Host>
     )
   }
