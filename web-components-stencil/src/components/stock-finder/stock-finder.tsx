@@ -31,6 +31,7 @@ export class StockFinder {
   render() {
     return (
       <Host>
+        <h2>Stock finder</h2>
         <form onSubmit={this.onFindStocks.bind(this)}>
           <input
             type="text"
