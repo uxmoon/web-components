@@ -1,4 +1,4 @@
-import { h, Host, Component, State } from '@stencil/core'
+import { h, Host, Component, State, Prop } from '@stencil/core'
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
@@ -20,13 +20,24 @@ export class StockPrice {
 
   @State() error: string;
 
+  @Prop() stockSymbol: string;
+
   // method to fetch data
   onFormSubmit(event: Event) {
     event.preventDefault();
 
     // const stockSymbol = (this.el.shadowRoot.querySelector('#stock-symbol') as HTMLInputElement).value
     const stockSymbol = this.elStockInput.value;
+    this.fetchStockPrice(stockSymbol)
+  }
 
+  componentDidLoad() {
+    if(this.stockSymbol) {
+      this.fetchStockPrice(this.stockSymbol)
+    }
+  }
+
+  fetchStockPrice(stockSymbol) {
     // alpha vantage API
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${AV_API_KEY}`
 
@@ -35,7 +46,7 @@ export class StockPrice {
         return response.json()
       })
       .then((data) => {
-         if (!data['Global Quote']['05. price']) {
+          if (!data['Global Quote']['05. price']) {
           throw new Error('Invalid symbol!')
         }
         this.error = null;

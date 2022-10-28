@@ -12,6 +12,7 @@ export namespace Components {
         "showDrawer": () => Promise<void>;
     }
     interface WcStockPrice {
+        "stockSymbol": string;
     }
 }
 declare global {
@@ -38,6 +39,7 @@ declare namespace LocalJSX {
         "show"?: boolean;
     }
     interface WcStockPrice {
+        "stockSymbol"?: string;
     }
     interface IntrinsicElements {
         "wc-drawer": WcDrawer;
