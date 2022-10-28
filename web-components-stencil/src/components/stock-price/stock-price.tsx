@@ -41,13 +41,15 @@ export class StockPrice {
   componentWillLoad() {
     console.log('component will load');
     console.log(this.stockSymbol);
+    if (this.stockSymbol) {
+      this.userInput = this.stockSymbol
+      this.validInput = true
+    }
   }
 
   componentDidLoad() {
     console.log('component did load');
     if (this.stockSymbol) {
-      this.userInput = this.stockSymbol
-      this.validInput = true
       this.fetchStockPrice(this.stockSymbol)
     }
   }
