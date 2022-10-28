@@ -39,8 +39,19 @@ ul {
   list-style: none;
 }
 
-li {
+li button {
   margin: 0.25rem 0;
   padding: 0.25rem;
-  border: 1px solid #ccc;
+  border: 1px solid #eff1fa;
+  background-color: #eff1fa;
+  color: #59458D;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+li button:hover,
+li button:focus {
+  background-color: #e6e9f7;
+  color: #59458D;
 }
