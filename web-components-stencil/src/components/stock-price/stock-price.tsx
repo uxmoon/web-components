@@ -1,4 +1,4 @@
-import { h, Host, Component, State, Prop, Watch } from '@stencil/core'
+import { h, Host, Component, State, Prop, Watch, Listen } from '@stencil/core'
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
@@ -25,7 +25,17 @@ export class StockPrice {
   @Watch('stockSymbol')
   stockSymbolChange(newValue: string, oldValue: string) {
     if (newValue !== oldValue) {
+      this.userInput = newValue
+      this.validInput = true
       this.fetchStockPrice(newValue)
+    }
+  }
+
+  @Listen('wcSelectedSymbol', { target: 'body' })
+  onSelectedSymbol(event: CustomEvent) {
+    console.log('stock symbol selected', event.detail);
+    if(event.detail && event.detail !== this.stockSymbol) {
+      this.stockSymbol = event.detail
     }
   }
 
@@ -41,16 +51,18 @@ export class StockPrice {
   componentWillLoad() {
     console.log('component will load');
     console.log(this.stockSymbol);
-    if (this.stockSymbol) {
-      this.userInput = this.stockSymbol
-      this.validInput = true
-    }
+    // if (this.stockSymbol) {
+    //   this.userInput = this.stockSymbol
+    //   this.validInput = true
+    // }
   }
 
   componentDidLoad() {
     console.log('component did load');
     if (this.stockSymbol) {
       this.fetchStockPrice(this.stockSymbol)
+      this.userInput = this.stockSymbol
+      this.validInput = true
     }
   }
 
