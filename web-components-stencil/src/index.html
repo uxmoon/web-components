@@ -89,6 +89,13 @@
 <body>
   <wc-stock-price stock-symbol="aapl"></wc-stock-price>
   <wc-stock-finder></wc-stock-finder>
+
+  <script>
+    const el = document.querySelector('wc-stock-finder')
+    el.addEventListener('wcSelectedSymbol', (event) => {
+      console.log(event);
+    })
+  </script>
 </body>
 
 </html>
