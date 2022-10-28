@@ -11,6 +11,8 @@ export namespace Components {
         "show": boolean;
         "showDrawer": () => Promise<void>;
     }
+    interface WcStockFinder {
+    }
     interface WcStockPrice {
         "stockSymbol": string;
     }
@@ -22,6 +24,12 @@ declare global {
         prototype: HTMLWcDrawerElement;
         new (): HTMLWcDrawerElement;
     };
+    interface HTMLWcStockFinderElement extends Components.WcStockFinder, HTMLStencilElement {
+    }
+    var HTMLWcStockFinderElement: {
+        prototype: HTMLWcStockFinderElement;
+        new (): HTMLWcStockFinderElement;
+    };
     interface HTMLWcStockPriceElement extends Components.WcStockPrice, HTMLStencilElement {
     }
     var HTMLWcStockPriceElement: {
@@ -30,6 +38,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "wc-drawer": HTMLWcDrawerElement;
+        "wc-stock-finder": HTMLWcStockFinderElement;
         "wc-stock-price": HTMLWcStockPriceElement;
     }
 }
@@ -38,11 +47,14 @@ declare namespace LocalJSX {
         "heading"?: string;
         "show"?: boolean;
     }
+    interface WcStockFinder {
+    }
     interface WcStockPrice {
         "stockSymbol"?: string;
     }
     interface IntrinsicElements {
         "wc-drawer": WcDrawer;
+        "wc-stock-finder": WcStockFinder;
         "wc-stock-price": WcStockPrice;
     }
 }
@@ -51,6 +63,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "wc-drawer": LocalJSX.WcDrawer & JSXBase.HTMLAttributes<HTMLWcDrawerElement>;
+            "wc-stock-finder": LocalJSX.WcStockFinder & JSXBase.HTMLAttributes<HTMLWcStockFinderElement>;
             "wc-stock-price": LocalJSX.WcStockPrice & JSXBase.HTMLAttributes<HTMLWcStockPriceElement>;
         }
     }
