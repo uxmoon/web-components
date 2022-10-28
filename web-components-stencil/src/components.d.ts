@@ -17,6 +17,10 @@ export namespace Components {
         "stockSymbol": string;
     }
 }
+export interface WcStockFinderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLWcStockFinderElement;
+}
 declare global {
     interface HTMLWcDrawerElement extends Components.WcDrawer, HTMLStencilElement {
     }
@@ -48,6 +52,7 @@ declare namespace LocalJSX {
         "show"?: boolean;
     }
     interface WcStockFinder {
+        "onWcSelectedSymbol"?: (event: WcStockFinderCustomEvent<string>) => void;
     }
     interface WcStockPrice {
         "stockSymbol"?: string;
