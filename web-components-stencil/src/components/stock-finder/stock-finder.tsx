@@ -1,4 +1,4 @@
-import { h, Host, Component } from '@stencil/core'
+import { h, Host, Component, State } from '@stencil/core'
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
@@ -8,6 +8,9 @@ import { AV_API_KEY } from '../../global/global';
 })
 
 export class StockFinder {
+  // Add State for results
+  @State() searchResults: {symbol: string, name: string}[] = [];
+
   // Add ref
   elStockName: HTMLInputElement;
 
@@ -21,7 +24,11 @@ export class StockFinder {
         return data.json()
       })
       .then((data) => {
-        console.log(data);
+        console.log(data.bestMatches);
+        this.searchResults =  data['bestMatches'].map((match) => {
+          return {symbol: match['1. symbol'], name: match['2. name']}
+        })
+        console.log(this.searchResults);
       })
       .catch((err) => {
         console.log(err);
@@ -42,6 +49,11 @@ export class StockFinder {
             type="submit"
           >Find</button>
         </form>
+        <ul>
+          {this.searchResults.map((result) => {
+            return <li>{result.symbol} - {result.name}</li>
+          })}
+        </ul>
       </Host>
     )
   }
