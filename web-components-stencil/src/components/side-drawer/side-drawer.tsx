@@ -26,7 +26,7 @@ export class SideDrawer {
 
   // Public methods
   @Method()
-  showDrawer() {
+  async showDrawer() {
     this.show = true;
   }
 
