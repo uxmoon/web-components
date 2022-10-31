@@ -16,6 +16,9 @@ export class StockFinder {
   // Add State for results
   @State() searchResults: {symbol: string, name: string}[] = [];
 
+  // Add State for spinner
+  @State() loading = false;
+
   // Add ref
   elStockName: HTMLInputElement;
 
@@ -26,6 +29,7 @@ export class StockFinder {
   // method
   onFindStocks(event: Event) {
     event.preventDefault();
+    this.loading = true;
     const stockName = this.elStockName.value;
     const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${stockName}&apikey=${AV_API_KEY}`
     fetch(url)
@@ -38,13 +42,30 @@ export class StockFinder {
           return {symbol: match['1. symbol'], name: match['2. name']}
         })
         console.log(this.searchResults);
+        this.loading = false;
       })
       .catch((err) => {
         console.log(err);
+        this.loading = false;
       })
   }
 
   render() {
+    let theContent =         <ul>
+    {this.searchResults.map((result) => {
+      return <li>
+        <button
+          type='button'
+          onClick={this.onSelectSymbol.bind(this, result.symbol)}
+        >
+          {result.symbol} - {result.name}
+        </button>
+      </li>
+    })}
+  </ul>
+  if (this.loading) {
+    theContent = <wc-spinner></wc-spinner>
+  }
     return (
       <Host>
         <h2>Stock finder</h2>
@@ -58,18 +79,7 @@ export class StockFinder {
             type="submit"
           >Find</button>
         </form>
-        <ul>
-          {this.searchResults.map((result) => {
-            return <li>
-              <button
-                type='button'
-                onClick={this.onSelectSymbol.bind(this, result.symbol)}
-              >
-                {result.symbol} - {result.name}
-              </button>
-            </li>
-          })}
-        </ul>
+        {theContent}
       </Host>
     )
   }

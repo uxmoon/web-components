@@ -20,6 +20,8 @@ export class StockPrice {
 
   @State() error: string;
 
+  @State() loading = false;
+
   @Prop() stockSymbol: string;
 
   @Watch('stockSymbol')
@@ -79,6 +81,7 @@ export class StockPrice {
   }
 
   fetchStockPrice(stockSymbol) {
+    this.loading = true;
     // alpha vantage API
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockSymbol}&apikey=${AV_API_KEY}`
 
@@ -93,10 +96,12 @@ export class StockPrice {
         this.error = null;
         // get price and convert string to number
         this.fetchedPrice = +data['Global Quote']['05. price']
+        this.loading = false
       })
       .catch((err) => {
         this.error = err.message;
         this.fetchedPrice = null;
+        this.loading = false;
       })
   }
 
@@ -121,6 +126,9 @@ export class StockPrice {
     if (this.fetchedPrice) {
       textMessage = <p>Price: ${this.fetchedPrice}</p>
     }
+    if (this.loading) {
+      textMessage = <wc-spinner></wc-spinner>
+    }
     return (
       <div>
         <form onSubmit={this.onFormSubmit.bind(this)}>
@@ -133,7 +141,7 @@ export class StockPrice {
           />
           <button
             type="submit"
-            disabled={!this.validInput}
+            disabled={!this.validInput || this.loading}
           >Fetch</button>
         </form>
         {/* <p>Price: ${this.fetchedPrice}</p> */}
