@@ -1,6 +1,6 @@
 :host {
   display: block;
-  border: 2px solid #6750A4;
+  border: 2px solid var(--color-primary);
   margin: 2rem;
   padding: 1rem;
   width: 20rem;
@@ -8,12 +8,12 @@
 }
 
 :host(.error) {
-  border-color: #ff0000;
+  border-color: var(--color-error);
 }
 
 form input {
   font: inherit;
-  color: #6750A4;
+  color: var(--color-primary);
   padding: 0.15rem 0.25rem;
   display: block;
   margin: 0 0 0.5rem;
@@ -22,15 +22,15 @@ form input {
 form button {
   font: inherit;
   padding: 0.25rem 0.5rem;
-  border: 1px solid #59458D;
-  background-color: #6750A4;
+  border: 1px solid var(--color-primary-active);
+  background-color: var(--color-primary);
   color: #fff;
   cursor: pointer;
 }
 
 form button:hover,
 form button:focus {
-  background-color: #59458D;
+  background-color: var(--color-primary-active);
 }
 
 form button[disabled] {
