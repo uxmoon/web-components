@@ -7,7 +7,14 @@ import { h, Component } from "@stencil/core";
 })
 
 export class Spinner {
-  return() {
-    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  render() {
+    return (
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    )
   }
 }
