@@ -96,7 +96,12 @@ export class StockPrice {
       })
       .catch((err) => {
         this.error = err.message;
+        this.fetchedPrice = null;
       })
+  }
+
+  hostData() {
+    return { class: this.error ? 'error' : ''}
   }
 
   validateInput(event: Event) {
@@ -117,7 +122,7 @@ export class StockPrice {
       textMessage = <p>Price: ${this.fetchedPrice}</p>
     }
     return (
-      <Host>
+      <div>
         <form onSubmit={this.onFormSubmit.bind(this)}>
           <input
             type="text"
@@ -133,7 +138,7 @@ export class StockPrice {
         </form>
         {/* <p>Price: ${this.fetchedPrice}</p> */}
         {textMessage}
-      </Host>
+      </div>
     )
   }
 }
