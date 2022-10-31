@@ -1,4 +1,4 @@
-import { h, Host, Component, State, Prop, Watch, Listen } from '@stencil/core'
+import { h, Component, State, Prop, Watch, Listen } from '@stencil/core'
 import { AV_API_KEY } from '../../global/global';
 
 @Component({
