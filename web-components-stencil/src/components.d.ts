@@ -11,6 +11,8 @@ export namespace Components {
         "show": boolean;
         "showDrawer": () => Promise<void>;
     }
+    interface WcSpinner {
+    }
     interface WcStockFinder {
     }
     interface WcStockPrice {
@@ -28,6 +30,12 @@ declare global {
         prototype: HTMLWcDrawerElement;
         new (): HTMLWcDrawerElement;
     };
+    interface HTMLWcSpinnerElement extends Components.WcSpinner, HTMLStencilElement {
+    }
+    var HTMLWcSpinnerElement: {
+        prototype: HTMLWcSpinnerElement;
+        new (): HTMLWcSpinnerElement;
+    };
     interface HTMLWcStockFinderElement extends Components.WcStockFinder, HTMLStencilElement {
     }
     var HTMLWcStockFinderElement: {
@@ -42,6 +50,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "wc-drawer": HTMLWcDrawerElement;
+        "wc-spinner": HTMLWcSpinnerElement;
         "wc-stock-finder": HTMLWcStockFinderElement;
         "wc-stock-price": HTMLWcStockPriceElement;
     }
@@ -51,6 +60,8 @@ declare namespace LocalJSX {
         "heading"?: string;
         "show"?: boolean;
     }
+    interface WcSpinner {
+    }
     interface WcStockFinder {
         "onWcSelectedSymbol"?: (event: WcStockFinderCustomEvent<string>) => void;
     }
@@ -59,6 +70,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "wc-drawer": WcDrawer;
+        "wc-spinner": WcSpinner;
         "wc-stock-finder": WcStockFinder;
         "wc-stock-price": WcStockPrice;
     }
@@ -68,6 +80,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "wc-drawer": LocalJSX.WcDrawer & JSXBase.HTMLAttributes<HTMLWcDrawerElement>;
+            "wc-spinner": LocalJSX.WcSpinner & JSXBase.HTMLAttributes<HTMLWcSpinnerElement>;
             "wc-stock-finder": LocalJSX.WcStockFinder & JSXBase.HTMLAttributes<HTMLWcStockFinderElement>;
             "wc-stock-price": LocalJSX.WcStockPrice & JSXBase.HTMLAttributes<HTMLWcStockPriceElement>;
         }
